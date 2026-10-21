@@ -6,7 +6,7 @@ class Solution {
         int r = book[1];
         int seat=book[2];
         ans[l-1]+=seat;
-        if(r != n){
+        if(r < n){
         ans[r]-=seat;}
       }
       for(int i=1 ; i<n ;i++){
