@@ -6,7 +6,7 @@ class Solution {
     for(int end=0 ;end<s.length();end++){
         char c = s.charAt(end);
         map.put(c,map.getOrDefault(c,0)+1);
-        if(map.size()!=end-start+1){
+        if(map.size()!=end-start+1){     // we can use while() in place of if
            char left= s.charAt(start);
            map.put(left,map.get(left)-1);
            if(map.get(left)==0){
