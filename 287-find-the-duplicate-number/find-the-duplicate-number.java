@@ -9,13 +9,34 @@ class Solution {
         //     }
         // }
         // return 0;
-        Set<Integer> set =new HashSet<>();
-        int n = nums.length;
-        for(int i=0;i<n;i++){
-            if(!set.add(nums[i])){
-                return nums[i];
+
+        // RUN BUT - Not metting the statement
+        // Set<Integer> set =new HashSet<>();
+        // int n = nums.length;
+        // for(int i=0;i<n;i++){
+        //     if(!set.add(nums[i])){
+        //         return nums[i];
+        //     }
+        // }
+        // return n;
+        int low=0;
+        int high=nums.length-1;
+
+        while(low<high){
+            int mid=(low+high)/2;
+            int count =0;
+            for(int num : nums){
+                if(num<=mid){
+                    count+=1;
+                }
+            }
+            if (count>mid){
+                high=mid;
+            }
+            else{
+                low=mid+1;
             }
         }
-        return n;
+        return low;
     }
 }
