@@ -19,24 +19,41 @@ class Solution {
         //     }
         // }
         // return n;
-        int low=0;
-        int high=nums.length-1;
 
-        while(low<high){
-            int mid=(low+high)/2;
-            int count =0;
-            for(int num : nums){
-                if(num<=mid){
-                    count+=1;
-                }
-            }
-            if (count>mid){
-                high=mid;
-            }
-            else{
-                low=mid+1;
-            }
+        //Binary search
+
+        // int low=0;
+        // int high=nums.length-1;
+
+        // while(low<high){
+        //     int mid=(low+high)/2;
+        //     int count =0;
+        //     for(int num : nums){
+        //         if(num<=mid){
+        //             count+=1;
+        //         }
+        //     }
+        //     if (count>mid){
+        //         high=mid;
+        //     }
+        //     else{
+        //         low=mid+1;
+        //     }
+        // }
+        // return low;
+        int slow =nums[0];
+        int fast = nums[nums[0]];
+
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[nums[fast]];
         }
-        return low;
+        slow=0;
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+
+        return slow;
     }
 }
