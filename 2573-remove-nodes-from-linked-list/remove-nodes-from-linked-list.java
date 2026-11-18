@@ -27,37 +27,73 @@ class Solution {
         // return newnode;
 
             //BY REVERSAL
-        ListNode prev = null, curr = head;
-        while (curr != null) {
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+        // ListNode prev = null, curr = head;
+        // while (curr != null) {
+        //     ListNode next = curr.next;
+        //     curr.next = prev;
+        //     prev = curr;
+        //     curr = next;
+        // }
+
+        // ListNode dummyHead = new ListNode(-1);
+        // ListNode tempPrev = dummyHead;
+        // curr = prev;
+
+        // while (curr != null) {
+        //     if (curr.val >= tempPrev.val) {
+        //         tempPrev.next = curr;
+        //         tempPrev = curr;
+        //         curr = curr.next;
+        //     } else {
+        //         curr = curr.next;
+        //     }
+        // }
+        // tempPrev.next = null;
+
+        // ListNode newPrev = null, newCurr = dummyHead.next;
+        // while (newCurr != null) {
+        //     ListNode next = newCurr.next;
+        //     newCurr.next = newPrev;
+        //     newPrev = newCurr;
+        //     newCurr = next;
+        // }
+
+        // return newPrev;
+
+        //BY TWO REVERSAL
+        if (head == null || head.next == null) {
+            return head;
         }
 
-        ListNode dummyHead = new ListNode(-1);
-        ListNode tempPrev = dummyHead;
-        curr = prev;
+        head = reverse(head);
 
-        while (curr != null) {
-            if (curr.val >= tempPrev.val) {
-                tempPrev.next = curr;
-                tempPrev = curr;
-                curr = curr.next;
+
+        ListNode curr = head;
+        int maxVal = curr.val;
+
+        while (curr != null && curr.next != null) {
+            if (curr.next.val < maxVal) {
+                curr.next = curr.next.next;
             } else {
                 curr = curr.next;
+                maxVal = curr.val;
             }
         }
-        tempPrev.next = null;
 
-        ListNode newPrev = null, newCurr = dummyHead.next;
-        while (newCurr != null) {
-            ListNode next = newCurr.next;
-            newCurr.next = newPrev;
-            newPrev = newCurr;
-            newCurr = next;
+        return reverse(head);
+    }
+
+    private ListNode reverse(ListNode node) {
+        ListNode prev = null;
+        ListNode curr = node;
+
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
         }
 
-        return newPrev;
+        return prev;
     }
 }
