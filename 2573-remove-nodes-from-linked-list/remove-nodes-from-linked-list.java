@@ -13,17 +13,16 @@ class Solution {
         ListNode curr=head;
         Stack<ListNode>st = new Stack<>();
         while(curr!=null){
-            while (!st.isEmpty() && st.peek().val < curr.val) {
-                st.pop();
-            }
             st.push(curr);
             curr=curr.next;
         }
         ListNode newnode=null;
         while(!st.isEmpty()){
             ListNode node=st.pop();
+            if(newnode==null||node.val>=newnode.val){
             node.next=newnode;
             newnode=node;
+            }
         }
         return newnode;
     }
