@@ -5,7 +5,9 @@ class Solution {
         int start=0;
         int end=0;
 
-        int[] lastocc=new int[26];
+        int[] lastocc=new int[26];    // We can use HashMap Also
+
+       
         for(int i=0;i<s.length();i++){
             char curr=s.charAt(i);
             lastocc[curr-'a']=i;
