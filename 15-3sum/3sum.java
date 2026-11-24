@@ -41,10 +41,10 @@ class Solution {
     // }
     
     // return new ArrayList<>(result);
-Arrays.sort(nums);
-Set<List<Integer>> set = new HashSet<>();
+    Arrays.sort(nums);
+    Set<List<Integer>> set = new HashSet<>();
 
-for (int i = 0; i < nums.length - 2; i++) {
+    for (int i = 0; i < nums.length ; i++) {
     int low = i + 1;
     int high = nums.length - 1;
     
